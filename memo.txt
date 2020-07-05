@@ -1,1 +1,2 @@
 v-bind:class takes an object as its value — the keys of this object are class names and the values are Vue app properties that return a truthy or falsy value. If the value is truthy, the class will be added to the element — otherwise it will not be added.
+This is a very commonly used feature in Vue. Because it’s so common, there’s a shorthand for v-bind, and it’s just a colon :
