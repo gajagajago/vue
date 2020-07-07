@@ -1,0 +1,7 @@
+#전역 컴포넌트 등록
+Vue.component(tagName, options)
+ex. Vue.component('my-component', {
+  // 옵션
+})
+
+*tagName은 all lowe
