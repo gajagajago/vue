@@ -1,0 +1,25 @@
+[선택자] https://code.tutsplus.com/ko/tutorials/the-30-css-selectors-you-must-memorize--net-16048
+
+[flex] https://blueshw.github.io/2019/07/28/advanced-flexbox/
+
+item에 기본값 적용
+flex item에 아무것도 입력하지 않았을때는 flex: 0 1 auto이므로, item 자신의 너비를 가진다. shrink가 1이지만 basis가 auto라서 사실상 스크린 사이즈가 줄어도 item이 줄어들지 않는다(flex-grow와 flex-shrink는 basis를 제외한 여백의 늘어남과 줄어듬을 의미한다).
+
+item에 "flex: 1" 적용
+flex: 1은 flex: 1 0 0%와 같다. 즉, basis가 0이고 확장하는 성격을 가진다. 그래서 flex에서는 각 item이 동일한 너비를 가진다. 그런데, inline-flex에서는 item들이 동일한 너비를 가지긴 하는데, 전체 사이즈가 좀 애매하다. 이유는 inline-flex 컨테이너의 사이즈가 각 item 너비의 합으로 결정되기 때문이다. 자세히 살펴보면 위의 item에 기본값 적용과 같은 너비를 가짐을 알 수 있다.
+
+IE(internet explorer)에서는 flex가 좀 다르다. 
+
+[flex]
+https://studiomeal.com/archives/197
+inline-flex도 있는데, 이건 block과 inline-block의 관계를 생각하시면 돼요.
+아이템의 배치와 관련이 있다기 보다는, 컨테이너가 주변 요소들과 어떻게 어우러질지 결정하는 값입니다. inline-flex는 inline-block처럼 동작해요.
+
+.item {
+	flex: 1;
+	/* flex-grow: 1; flex-shrink: 1; flex-basis: 0%; */
+	flex: 1 1 auto;
+	/* flex-grow: 1; flex-shrink: 1; flex-basis: auto; */
+	flex: 1 500px;
+	/* flex-grow: 1; flex-shrink: 1; flex-basis: 500px; */
+}
