@@ -1,0 +1,42 @@
+<div id="example-1">
+  <button v-on:click="counter += 1">Add 1</button>
+  <p>위 버튼을 클릭한 횟수는 {{ counter }} 번 입니다.</p>
+</div>
+
+var example1 = new Vue({
+  el: '#example-1',
+  data: {
+    counter: 0
+  }
+})
+
+
+<div id="example-2">
+  <button v-on:click="greet">Greet</button>
+</div>
+var example2 = new Vue({
+  el: '#example-2',
+  data: {
+    name: 'Vue.js'
+  },
+  // 메소드는 `methods` 객체 안에 정의합니다
+  methods: {
+    greet: function (event) {
+      // 메소드 안에서 사용하는 `this` 는 Vue 인스턴스를 가리킵니다
+      alert('Hello ' + this.name + '!')
+      // `event` 는 네이티브 DOM 이벤트입니다
+      if (event) {
+        alert(event.target.tagName)
+      }
+    }
+  }
+})
+
+
+
+# 인라인 메서드 핸들링 식
+<button @click="testClick($event, item)">클릭</button>
+인라인 메서드 핸들러 식에서는 이벤트 객체 또는 사용자 정의 이벤트 매개변수를 '$event'라는 변수 이름으로 사용 할 수도 있다.
+'$event'는 원본 DOM 이벤트에 액세스가 가능한 특별한 변수다.
+
+

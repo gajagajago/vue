@@ -23,3 +23,12 @@ inline-flex도 있는데, 이건 block과 inline-block의 관계를 생각하시
 	flex: 1 500px;
 	/* flex-grow: 1; flex-shrink: 1; flex-basis: 500px; */
 }
+
+[Grid]
+Flex는 한 방향 레이아웃 시스템이고 (1차원)
+Grid는 두 방향(가로-세로) 레이아웃 시스템 (2차원)
+
+Flex와 마찬가지로, Grid는 컨테이너에 display: grid; 를 설정하는 것으로 시작합니다.
+.container {
+	display: grid;
+}

@@ -1,0 +1,77 @@
+v-model은 모든 form 엘리먼트의 초기 value와 checked 그리고 selected 속성을 무시합니다. 항상 Vue 인스턴스 데이터를 원본 소스로 취급합니다. 컴포넌트의 data 옵션 안에 있는 JavaScript에서 초기값을 선언해야합니다.
+
+v-model은 내부적으로 서로 다른 속성을 사용하고 서로 다른 입력 요소에 대해 서로 다른 이벤트를 전송합니다 :
+
+text 와 textarea 태그는 value속성과 input이벤트를 사용합니다.
+체크박스들과 라디오버튼들은 checked 속성과 change 이벤트를 사용합니다.
+Select 태그는 value를 prop으로, change를 이벤트로 사용합니다.
+
+<input type="checkbox" id="checkbox" v-model="checked">
+<label for="checkbox">{{ checked }}</label>
+
+여러개의 체크박스는 같은 배열을 바인딩 할 수 있습니다
+
+<div id='example-3'>
+  <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+  <label for="jack">Jack</label>
+  <input type="checkbox" id="john" value="John" v-model="checkedNames">
+  <label for="john">John</label>
+  <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+  <label for="mike">Mike</label>
+  <br>
+  <span>체크한 이름: {{ checkedNames }}</span>
+</div>
+new Vue({
+  el: '#example-3',
+  data: {
+    checkedNames: []
+  }
+})
+
+#셀렉트 -> v-for를 이용한 동적 옵션 렌더링도 가능하다. 
+<select v-model="selected">
+  <option disabled value="">Please select one</option>
+  <option>A</option>
+  <option>B</option>
+  <option>C</option>
+</select>
+<span>선택함: {{ selected }}</span>
+
+new Vue({
+  el: '...',
+  data: {
+    selected: ''
+  }
+})
+
+
+★☆★☆(중요)값 바인딩하기★☆★☆
+# 체크박스
+<input
+  type="checkbox"
+  v-model="toggle"
+  true-value="yes"
+  false-value="no"
+>
+// 체크된 경우
+vm.toggle === 'yes'
+// 체크 되지 않은 경우
+vm.toggle === 'no'
+
+
+# 라디오
+<input type="radio" v-model="pick" v-bind:value="a">
+// 체크 하면:
+vm.pick === vm.a
+
+
+#셀렉트
+select v-model="selected">
+  <!-- inline object literal -->
+  <option v-bind:value="{ number: 123 }">123</option>
+</select>
+// 선택 하면:
+typeof vm.selected // -> 'object'
+vm.selected.number // -> 123
+
+

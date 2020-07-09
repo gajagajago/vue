@@ -1,0 +1,57 @@
+https://studiomeal.com/archives/533
+
+.container {
+	grid-template-columns: 200px 200px 500px;
+	/* grid-template-columns: 1fr 1fr 1fr */
+	/* grid-template-columns: repeat(3, 1fr) */
+	/* grid-template-columns: 200px 1fr */
+	/* grid-template-columns: 100px 200px auto */
+
+	grid-template-rows: 200px 200px 500px;
+	/* grid-template-rows: 1fr 1fr 1fr */
+	/* grid-template-rows: repeat(3, 1fr) */
+	/* grid-template-rows: 200px 1fr */
+	/* grid-template-rows: 100px 200px auto */
+}
+
+grid-template-columns: 200px 200px 500px;
+=> column을 200px 200px 500px로 만들겠다. 
+
+grid-template-columns: 1fr 1fr 1fr;
+fr은 fraction(뜻은 여기로[새 창])인데요, 숫자 비율대로 트랙의 크기를 나눕니다.
+즉 위의 1fr 1fr 1fr은 균일하게 1:1:1 비율인 3개의 column을 만들겠다는 의미에요.
+
+grid-template-columns: 100px 2fr 1fr;
+*고정 크기와 가변 크기를 섞어 쓴 경우
+왼쪽의 첫번째 column은 100px로 고정되고, 나머지 두번째 세번째 column은 2:1의 비율로 유연하게 움직이게 됩니다.
+
+#repeat
+.container {
+	grid-template-columns: repeat(5, 1fr);
+	/* grid-template-columns: 1fr 1fr 1fr 1fr 1fr */
+}
+
+#minmax
+minmax(100px, auto)의 의미는 최소한 100px, 최대는 자동으로(auto) 늘어나게
+
+#auto-fill, auto-fit
+.container {
+	grid-template-columns: repeat(auto-fill, minmax(20%, auto));
+}
+
+ex. cell 개수가 5개 이상이면, auto-fill했을 때 min 20%이므로 row에 5cell 들어간다. 
+cell 개수가 ex.4개면, row에 4cell 들어간다. 그러므로 20%짜리 한 자리가 남는다. 
+-> auto-fit으로 하면 min이 자동적으로 25%로 수정되며 row를 꽉 채운다. 
+
+#row-gap, column-gap, gap
+.container {
+	row-gap: 10px;
+	/* row의 간격을 10px로 */
+	column-gap: 20px;
+	/* column의 간격을 20px로 */
+}
+
+.container {
+	gap: 10px 20px;
+	/* row-gap: 10px; column-gap: 20px; */
+}
