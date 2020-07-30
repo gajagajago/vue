@@ -1,0 +1,7 @@
+이미지 객체 만들기: File -> Image // Path -> Image 방식
+및 
+이미지 리사이징 (썸네일 만들기) 관련 url
+
+https://post.flow.team/developer/image-resizing1/
+
+https://post.flow.team/developer/img-resizing-2/

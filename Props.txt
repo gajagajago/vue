@@ -1,0 +1,55 @@
+Vue.js의 부모-자식 컴포넌트 관계: props는 아래로, events 위로 
+=> 부모는 props를 통해 자식에게 데이터를 전달하고 자식은 events를 통해 부모에게 메시지를 보냅니다.
+
+props 옵션은, 컴포넌트 간 직접 데이터 참조를 할 수 없기 때문에 사용한다. 
+
+Props: 단방향 바인딩. 상위->하위 만 가능. 
+하위 컴포넌트가 실수로 부모의 상태를 변경하여 앱의 데이터 흐름을 추론하기 더 어렵게 만드는 것을 방지할 수 있습니다.
+
+<prop 사용법>
+1. prop의 초기 값을 초기 값으로 사용하는 로컬 데이터 속성 정의
+ex. 
+props: ['initialCounter'],
+data: function() {
+  return {counter: this.initialCounter}
+}
+
+2. prop 값으로부터 계산된 속성을 정의
+ex. 
+props: ['size']
+computed: {
+  normalizedSize: function() {
+    return this.size.trim().toLowerCase()  
+  }
+}
+
+* props를 문자열 배열로 정의하는 대신, 유효성 검사 요구사항이 있는 객체를 사용할 수 있음.
+Vue.component('example', {
+  props: {
+    propA: number,
+    propB: [String, Number], 
+    propC: {
+       type: String,
+       required: true 
+     }, 
+    propD: {
+       type: Number,
+       default: 100
+    }
+    propE: {
+      type: Object,
+      default: function () {
+        return { message: 'hello' }
+      }
+    },
+    // 사용자 정의 유효성 검사 가능
+    propF: {
+      validator: function (value) {
+        return value > 10
+      }
+    }
+  }  
+})
+
+
+* Vue component의 data는 function이다. 
